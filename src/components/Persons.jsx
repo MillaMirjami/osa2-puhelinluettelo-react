@@ -6,7 +6,7 @@ const Persons = ({searchTerm, persons, button}) => {
         {filteredPersons.map(personShown => 
         <p key={personShown.name}>
           {personShown.name} {personShown.number}
-          <button onClick={() => button(personShown.id)}>delete</button>
+          <button onClick={() => button(personShown._id)}>delete</button>
           </p>)}
       </div>
     )

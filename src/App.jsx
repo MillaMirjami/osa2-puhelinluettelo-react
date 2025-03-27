@@ -108,18 +108,18 @@ const App = () => {
     }
   
 
-  const removePerson = (id) => {
-    if(id){
+  const removePerson = (_id) => {
+    if(_id){
       if(window.confirm('Are you sure?')) {
         personService
-        .deletePerson(id)
+        .deletePerson(_id)
         .then(() => {
-          const deletedP = persons.find(p => p.id === id)
+          const deletedP = persons.find(p => p._id === _id)
           setMessage(`Removed ${deletedP.name}`)
           setTimeout(() => {
             setMessage(null)
           }, 5000);
-          const filteredPersons = persons.filter(person => person.id !== id)
+          const filteredPersons = persons.filter(person => person._id !== _id)
         setPersons(filteredPersons)
         })
         .catch(error => {
