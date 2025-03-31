@@ -54,16 +54,10 @@ const App = () => {
             console.log("These are the updated: ", updatedPersons)
             setPersons(updatedPersons)
             
-
-            // setPersons(prevPersons => {
-            //   const updatedList = prevPersons.map(p => p.id === returnedPerson.id ? {...p, number: newNumber} : p)
-            //   console.log('PÄIVTYSSSS', updatedList, returnedPerson)
-            //   return updatedList
-            // })
           })
             .catch(error => {
               console.log(error.message)
-              setErrorMessage(`Error is ${error.message}`)
+              setErrorMessage(`${error.message}`)
               setTimeout(() => setErrorMessage(null), 5000);
             })
           }
@@ -87,6 +81,12 @@ const App = () => {
         }, 5000);
         const updatedPersons = [...persons, returnedPerson]
         setPersons(updatedPersons)
+      })
+      .catch(error => {
+        const erMessage = error.response.data.error
+        console.log('Error when creating a new person:', erMessage)
+        setErrorMessage(`${erMessage}`)
+        setTimeout(() => setErrorMessage(null), 5000);
       })
     }
     setNewName('')
